@@ -28,7 +28,7 @@
             //This task will install all versions of dependencies defined in bower.json and run the tests for all of them
             'bower-verify': {
                 options: {
-                    showTasksOutput: false,
+                    showTasksOutput: true,
                     completeOnError: true,
                 },
                 test: {
@@ -106,7 +106,7 @@
 
         //For testing
         grunt.registerTask('test', ['jshint', 'karma:once']);
-        grunt.registerTask('test:full', ['jshint', 'bower-verify']);
+        grunt.registerTask('test:full', ['jshint', 'bower', 'bower-verify']);
 
         //For publishing demo to github pages
         grunt.registerTask('publish', ['requirejs', 'replace', 'copy', 'gh-pages']);

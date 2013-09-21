@@ -24,10 +24,7 @@ This binding is written in AMD. It returns the binding object. You need to attac
 
 ## Behaviour
 
-TODO:
-
-### valueUpdate
-
+Displays the element if the observable is falsy
 
 ## Demo
 
