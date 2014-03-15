@@ -24,12 +24,12 @@ define(['knockout', 'src/hidden'], function(ko, hidden) {
 
     it('should show element if observable is false', function() {
       viewModel.obs(false);
-      equal(element.is(':hidden'), false);
+      expect(element.is(':hidden')).to.be(false);
     });
 
     it('should hide element if observable is true', function() {
       viewModel.obs(true);
-      equal(element.is(':visible'), false);
+      expect(element.is(':visible')).to.be(false);
     });
 
 
