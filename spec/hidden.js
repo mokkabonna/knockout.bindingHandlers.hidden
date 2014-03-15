@@ -6,8 +6,8 @@ define(['knockout', 'src/hidden'], function(ko, hidden) {
     var root;
 
     before(function () {
-      root.innerHTML = '<button id="hiddenornot" data-bind="hidden:obs">foo</button>';
       root = document.createElement('div');
+      root.innerHTML = '<button id="hiddenornot" data-bind="hidden:obs">foo</button>';
       document.body.appendChild(root);
       element = document.getElementById('hiddenornot');
     });
