@@ -6,29 +6,29 @@
 
 HTML
 
-	<input data-bind="hidden : myobs" >
+    <input data-bind="hidden: myobs" >
 
 JS
 
-	ko.applyBindings({
-		myobs : ko.observable()
-	});
+    ko.applyBindings({
+        myobs : ko.observable()
+    });
 
 
-This binding is written in AMD. It returns the binding object. You need to attach it yourself since this allows it to coexist with other possible bindings named hidden. This will only need to be done once as it will then be attached to the knockout module.
+This binding is written in AMD. It returns the binding object. It will attach itself to `knockout.bindingHandlers.hidden` once required for the first time. This can be overridden with a config section in your requirejs config like shown below.
 
-	define(['knockout', 'somefolder/hidden'], function(ko, hidden){
-		ko.bindingHandlers.hidden = hidden;
-		//use knockout
-	});
+```
+requirejs.config({
+    config: {
+        'bower_components/knockout.bindingHandlers.hidden/src/hidden': {
+            name: 'someOtherName'
+    }
+});
+```
 
 ## Behaviour
 
-Displays the element if the observable is falsy
-
-## Demo
-
-There is a demo at http://mokkabonna.github.io/knockout.bindingHandlers.hidden
+TODO:
 
 ## Dependencies
 
@@ -40,8 +40,7 @@ For accurate versions check bower.json
 
 Clone, then run (assuming you have node)
 
-    npm install
-    grunt bower //this is to install all bower packages
+    npm install & bower install
 
 You can now use grunt develop for a ready made watch task for development. Tests, linting..
 
