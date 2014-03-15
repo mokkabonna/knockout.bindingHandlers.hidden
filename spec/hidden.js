@@ -2,36 +2,40 @@ define(['knockout', 'src/hidden'], function(ko, hidden) {
 
   describe('Hidden', function() {
     var viewModel;
-    var root;
+    var element;
+
+    before(function () {
+      var root = document.createElement('div');
+      root.innerHTML = '<button id="hiddenornot" data-bind="hidden:obs">foo</button>';
+      document.body.appendChild(root);
+      element = document.getElementById('hiddenornot');
+    });
 
     beforeEach(function() {
-      document.body.innerHTML = '<button id="hiddenornot" data-bind="hidden:obs">foo</button>';
-      root = document.getElementById('hiddenornot');
       viewModel = {
         obs: ko.observable()
       };
 
-      ko.applyBindings(viewModel, root);
+      ko.applyBindings(viewModel, document.body);
     });
 
     afterEach(function() {
-      ko.cleanNode(root);
+      ko.cleanNode(document.body);
     });
 
     it('should be bound', function() {
-      expect(ko.dataFor(root)).to.be(viewModel);
+      expect(ko.dataFor(element)).to.be(viewModel);
     });
 
     it('should show element if observable is false', function() {
       viewModel.obs(false);
-      expect(element.is(':hidden')).to.be(false);
+      expect(element.style.display).to.be('');
     });
 
     it('should hide element if observable is true', function() {
       viewModel.obs(true);
-      expect(element.is(':visible')).to.be(false);
+      expect(element.style.display).to.be('none');
     });
-
 
   });
 });

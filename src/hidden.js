@@ -1,10 +1,12 @@
+/* jshint boss:true*/
 define(['knockout'], function(ko) {
-	'use strict';
-	return {
-		update: function(element, valueAccessor) {
-			ko.bindingHandlers.visible.update(element, function() {
-				return !ko.utils.unwrapObservable(valueAccessor());
-			});
-		}
-	};
+  'use strict';
+
+  return ko.bindingHandlers.hidden = {
+    update: function(element, valueAccessor) {
+      ko.bindingHandlers.visible.update(element, function() {
+        return !ko.utils.unwrapObservable(valueAccessor());
+      });
+    }
+  };
 });
