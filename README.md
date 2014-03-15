@@ -28,7 +28,7 @@ requirejs.config({
 
 ## Behaviour
 
-TODO:
+This is just an inverted behaviour to the official `visible` binding
 
 ## Dependencies
 
