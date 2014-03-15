@@ -3,10 +3,11 @@ define(['knockout', 'src/hidden'], function(ko, hidden) {
   describe('Hidden', function() {
     var viewModel;
     var element;
+    var root;
 
     before(function () {
-      var root = document.createElement('div');
       root.innerHTML = '<button id="hiddenornot" data-bind="hidden:obs">foo</button>';
+      root = document.createElement('div');
       document.body.appendChild(root);
       element = document.getElementById('hiddenornot');
     });
@@ -16,11 +17,11 @@ define(['knockout', 'src/hidden'], function(ko, hidden) {
         obs: ko.observable()
       };
 
-      ko.applyBindings(viewModel, document.body);
+      ko.applyBindings(viewModel, root);
     });
 
     afterEach(function() {
-      ko.cleanNode(document.body);
+      ko.cleanNode(root);
     });
 
     it('should be bound', function() {
